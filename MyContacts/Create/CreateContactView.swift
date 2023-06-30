@@ -1,41 +1,36 @@
-//
-//  CreateContactView.swift
-//  MyContacts
-//
-//  Created by Charlie Nguyen on 30/06/2023.
-//
-
 import SwiftUI
 
 struct CreateContactView: View {
-    @Environment(\.dismiss) var dismiss
+
+    @Environment(\.dismiss) private var dismiss
+    @ObservedObject var viewModel: EditContactViewModel
 
     var body: some View {
         List {
 
             Section("General") {
 
-                TextField("Name", text: .constant(""))
+                TextField("Name", text: $viewModel.contact.name)
                                     .keyboardType(.namePhonePad)
 
-                TextField("Email", text: .constant(""))
+                TextField("Email", text: $viewModel.contact.email)
                     .keyboardType(.emailAddress)
 
-                TextField("Phone Number", text: .constant(""))
+                TextField("Phone Number", text: $viewModel.contact.phoneNumber)
                     .keyboardType(.phonePad)
 
                 DatePicker("Birthday",
-                           selection: .constant(.now),
+                           selection: $viewModel.contact.dob,
                            displayedComponents: [.date])
                 .datePickerStyle(.compact)
 
-                Toggle("Favourite", isOn: .constant(true))
+                Toggle("Favourite", isOn: $viewModel.contact.isFavourite)
 
             }
 
             Section("Notes") {
                 TextField("",
-                          text: .constant(""),
+                          text: $viewModel.contact.notes,
                           axis: .vertical)
             }
         }
@@ -43,13 +38,18 @@ struct CreateContactView: View {
         .toolbar {
             ToolbarItem(placement: .confirmationAction) {
                 Button("Done") {
-                    dismiss()
+                    do {
+                        try viewModel.save()
+                        dismiss()
+                    } catch {
+                        print(error)
+                    }
                 }
             }
 
             ToolbarItem(placement: .navigationBarLeading) {
                 Button("Cancel") {
-
+                    dismiss()
                 }
             }
         }
@@ -59,7 +59,7 @@ struct CreateContactView: View {
 struct CreateContactView_Previews: PreviewProvider {
     static var previews: some View {
         NavigationStack {
-            CreateContactView()
+            CreateContactView(viewModel: .init(provider: .shared))
         }
     }
 }

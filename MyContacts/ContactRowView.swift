@@ -1,35 +1,54 @@
 import SwiftUI
 
 struct ContactRowView: View {
+
+    @Environment(\.managedObjectContext) private var mock
+
+    @ObservedObject var contact: Contact
+
     var body: some View {
         VStack(alignment: .leading, spacing: 8) {
 
-            Text("Name")
+            Text("\(contact.isBirthday ? "🎈" : "")\(contact.name)")
                 .font(.system(size: 26, design: .rounded).bold())
 
-            Text("Email")
+            Text(contact.email)
                 .font(.callout.bold())
 
-            Text("Phone Number")
+            Text(contact.phoneNumber)
                 .font(.callout.bold())
         }
         .frame(maxWidth: .infinity, alignment: .leading)
         .overlay(alignment: .topTrailing) {
             Button {
-
+                toggleFavourite()
             } label: {
                 Image(systemName: "star")
                     .font(.title3)
                     .symbolVariant(.fill)
-                    .foregroundColor(.gray.opacity(0.3))
+                    .foregroundColor(contact.isFavourite ? .yellow : .gray.opacity(0.3))
             }
             .buttonStyle(.plain)
         }
     }
 }
 
-struct ContactRowView_Previews: PreviewProvider {
-    static var previews: some View {
-        ContactRowView()
+private extension ContactRowView {
+
+    func toggleFavourite() {
+        contact.isFavourite.toggle()
+        do {
+            if mock.hasChanges {
+                try mock.save()
+            }
+        } catch {
+            print(error)
+        }
     }
 }
+
+//struct ContactRowView_Previews: PreviewProvider {
+//    static var previews: some View {
+//        ContactRowView(contact: <#Contact#>)
+//    }
+//}

@@ -11,6 +11,10 @@ final class ContactsProvider {
         persistentContainer.viewContext
     }
 
+    var newContext: NSManagedObjectContext {
+        persistentContainer.newBackgroundContext()
+    }
+
     private init() {
 
         persistentContainer = NSPersistentContainer(name: "ContactsDataModel")
