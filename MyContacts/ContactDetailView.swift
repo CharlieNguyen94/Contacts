@@ -1,24 +1,27 @@
 import SwiftUI
 
 struct ContactDetailView: View {
+
+    let contact: Contact
+
     var body: some View {
         List {
             Section("General") {
 
                 LabeledContent {
-                    Text("contact.email")
+                    Text(contact.email)
                 } label: {
                     Text("Email")
                 }
 
                 LabeledContent {
-                    Text("contact.phoneNumber")
+                    Text(contact.phoneNumber)
                 } label: {
                     Text("Phone Number")
                 }
 
                 LabeledContent {
-                    Text(.now, style: .date)
+                    Text(contact.dob, style: .date)
                 } label: {
                     Text("Birthday")
                 }
@@ -26,17 +29,17 @@ struct ContactDetailView: View {
             }
 
             Section("Notes") {
-                Text("contact.notes")
+                Text(contact.notes)
             }
         }
-        .navigationTitle("contact.formattedName")
+        .navigationTitle(contact.formattedName)
     }
 }
 
 struct ContactDetailView_Previews: PreviewProvider {
     static var previews: some View {
         NavigationStack {
-            ContactDetailView()
+            ContactDetailView(contact: .preview())
         }
     }
 }
