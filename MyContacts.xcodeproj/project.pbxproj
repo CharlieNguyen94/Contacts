@@ -14,6 +14,9 @@
 		9524D81E2A4EC22B00E81FA5 /* ContactsDataModel.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 9524D81C2A4EC22A00E81FA5 /* ContactsDataModel.xcdatamodeld */; };
 		9524D8202A4EEC1000E81FA5 /* Contact.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9524D81F2A4EEC1000E81FA5 /* Contact.swift */; };
 		9524D8242A4EED3300E81FA5 /* ContactsProvider.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9524D8232A4EED3300E81FA5 /* ContactsProvider.swift */; };
+		9524D8262A4EFDC000E81FA5 /* ContactRowView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9524D8252A4EFDC000E81FA5 /* ContactRowView.swift */; };
+		9524D8282A4EFE0400E81FA5 /* ContactDetailView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9524D8272A4EFE0300E81FA5 /* ContactDetailView.swift */; };
+		9524D82A2A4EFF5E00E81FA5 /* CreateContactView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9524D8292A4EFF5E00E81FA5 /* CreateContactView.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -25,6 +28,9 @@
 		9524D81D2A4EC22B00E81FA5 /* ContactsDataModel.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = ContactsDataModel.xcdatamodel; sourceTree = "<group>"; };
 		9524D81F2A4EEC1000E81FA5 /* Contact.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Contact.swift; sourceTree = "<group>"; };
 		9524D8232A4EED3300E81FA5 /* ContactsProvider.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContactsProvider.swift; sourceTree = "<group>"; };
+		9524D8252A4EFDC000E81FA5 /* ContactRowView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContactRowView.swift; sourceTree = "<group>"; };
+		9524D8272A4EFE0300E81FA5 /* ContactDetailView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContactDetailView.swift; sourceTree = "<group>"; };
+		9524D8292A4EFF5E00E81FA5 /* CreateContactView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CreateContactView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -61,6 +67,9 @@
 				9524D8212A4EEC2D00E81FA5 /* Model */,
 				9524D80E2A4EC1D900E81FA5 /* MyContactsApp.swift */,
 				9524D8102A4EC1D900E81FA5 /* ContentView.swift */,
+				9524D8292A4EFF5E00E81FA5 /* CreateContactView.swift */,
+				9524D8272A4EFE0300E81FA5 /* ContactDetailView.swift */,
+				9524D8252A4EFDC000E81FA5 /* ContactRowView.swift */,
 				9524D81C2A4EC22A00E81FA5 /* ContactsDataModel.xcdatamodeld */,
 				9524D8122A4EC1DB00E81FA5 /* Assets.xcassets */,
 				9524D8142A4EC1DB00E81FA5 /* Preview Content */,
@@ -164,8 +173,11 @@
 			files = (
 				9524D8202A4EEC1000E81FA5 /* Contact.swift in Sources */,
 				9524D8242A4EED3300E81FA5 /* ContactsProvider.swift in Sources */,
+				9524D8282A4EFE0400E81FA5 /* ContactDetailView.swift in Sources */,
 				9524D81E2A4EC22B00E81FA5 /* ContactsDataModel.xcdatamodeld in Sources */,
 				9524D8112A4EC1D900E81FA5 /* ContentView.swift in Sources */,
+				9524D82A2A4EFF5E00E81FA5 /* CreateContactView.swift in Sources */,
+				9524D8262A4EFDC000E81FA5 /* ContactRowView.swift in Sources */,
 				9524D80F2A4EC1D900E81FA5 /* MyContactsApp.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

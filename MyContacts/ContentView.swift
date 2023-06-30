@@ -1,21 +1,40 @@
-//
-//  ContentView.swift
-//  MyContacts
-//
-//  Created by Charlie Nguyen on 30/06/2023.
-//
-
 import SwiftUI
 
 struct ContentView: View {
+
+    @State private var isShowingNewContact = false
+
     var body: some View {
-        VStack {
-            Image(systemName: "globe")
-                .imageScale(.large)
-                .foregroundColor(.accentColor)
-            Text("Hello, world!")
+        NavigationStack {
+            List {
+                ForEach(0...10, id: \.self) { item in
+                    ZStack(alignment: .leading) {
+                        NavigationLink {
+                            ContactDetailView()
+                        } label: {}
+                            .opacity(0)
+
+                        ContactRowView()
+                    }
+                }
+            }
+            .toolbar {
+                ToolbarItem(placement: .primaryAction) {
+                    Button {
+                        isShowingNewContact.toggle()
+                    } label: {
+                        Image(systemName: "plus")
+                            .font(.title2)
+                    }
+                }
+            }
+            .sheet(isPresented: $isShowingNewContact) {
+                NavigationStack {
+                    CreateContactView()
+                }
+            }
+            .navigationTitle("Contacts")
         }
-        .padding()
     }
 }
 
