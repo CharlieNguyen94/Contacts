@@ -2,7 +2,7 @@ import SwiftUI
 
 struct ContentView: View {
 
-    @State private var isShowingNewContact = false
+    @State private var contactToEdit: Contact?
 
     @FetchRequest(fetchRequest: Contact.all()) private var contacts
 
@@ -37,7 +37,7 @@ struct ContentView: View {
                                         .tint(.red)
 
                                         Button(role: .destructive) {
-
+                                            contactToEdit = contact
                                         } label: {
                                             Label("Edit", systemImage: "pencil")
                                         }
@@ -51,18 +51,20 @@ struct ContentView: View {
             .toolbar {
                 ToolbarItem(placement: .primaryAction) {
                     Button {
-                        isShowingNewContact.toggle()
+                        contactToEdit = .empty(context: provider.newContext)
                     } label: {
                         Image(systemName: "plus")
                             .font(.title2)
                     }
                 }
             }
-            .sheet(isPresented: $isShowingNewContact) {
+            .sheet(item: $contactToEdit, onDismiss: {
+                contactToEdit = nil
+            }, content: { contact in
                 NavigationStack {
-                    CreateContactView(viewModel: .init(provider: provider))
+                    CreateContactView(viewModel: .init(provider: provider, contact: contact))
                 }
-            }
+            })
             .navigationTitle("Contacts")
         }
     }
