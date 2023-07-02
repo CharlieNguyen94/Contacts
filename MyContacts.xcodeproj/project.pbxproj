@@ -18,6 +18,7 @@
 		9524D8282A4EFE0400E81FA5 /* ContactDetailView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9524D8272A4EFE0300E81FA5 /* ContactDetailView.swift */; };
 		9524D82A2A4EFF5E00E81FA5 /* CreateContactView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9524D8292A4EFF5E00E81FA5 /* CreateContactView.swift */; };
 		9524D82D2A4F01B200E81FA5 /* EditContactViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9524D82C2A4F01B200E81FA5 /* EditContactViewModel.swift */; };
+		957A22D52A503BD500CCF991 /* NoContactsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 957A22D42A503BD500CCF991 /* NoContactsView.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -33,6 +34,7 @@
 		9524D8272A4EFE0300E81FA5 /* ContactDetailView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContactDetailView.swift; sourceTree = "<group>"; };
 		9524D8292A4EFF5E00E81FA5 /* CreateContactView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CreateContactView.swift; sourceTree = "<group>"; };
 		9524D82C2A4F01B200E81FA5 /* EditContactViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EditContactViewModel.swift; sourceTree = "<group>"; };
+		957A22D42A503BD500CCF991 /* NoContactsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NoContactsView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -68,6 +70,7 @@
 				9524D82B2A4F019800E81FA5 /* Create */,
 				9524D8222A4EED2600E81FA5 /* Provider */,
 				9524D8212A4EEC2D00E81FA5 /* Model */,
+				957A22D42A503BD500CCF991 /* NoContactsView.swift */,
 				9524D80E2A4EC1D900E81FA5 /* MyContactsApp.swift */,
 				9524D8102A4EC1D900E81FA5 /* ContentView.swift */,
 				9524D8272A4EFE0300E81FA5 /* ContactDetailView.swift */,
@@ -190,6 +193,7 @@
 				9524D8112A4EC1D900E81FA5 /* ContentView.swift in Sources */,
 				9524D82A2A4EFF5E00E81FA5 /* CreateContactView.swift in Sources */,
 				9524D8262A4EFDC000E81FA5 /* ContactRowView.swift in Sources */,
+				957A22D52A503BD500CCF991 /* NoContactsView.swift in Sources */,
 				9524D80F2A4EC1D900E81FA5 /* MyContactsApp.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

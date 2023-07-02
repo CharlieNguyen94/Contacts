@@ -51,7 +51,7 @@ extension Contact {
             contact.name = "item \(i)"
             contact.email = "test_\(i)@mail.com"
             contact.isFavourite = Bool.random()
-            contact.phoneNumber = "07000000\(i)"
+            contact.phoneNumber = "0700000000\(i)"
             contact.dob = Calendar.current.date(byAdding: .day, value: -i, to: .now) ?? .now
             contact.notes = "This is a preview for item \(i)"
             contacts.append(contact)
