@@ -23,26 +23,60 @@ struct ContentView: View {
                                     .opacity(0)
 
                                 ContactRowView(contact: contact)
+                                    .swipeActions(allowsFullSwipe: true) {
+
+                                        Button(role: .destructive) {
+                                            do {
+                                                try delete(contact)
+                                            } catch {
+                                                print(error)
+                                            }
+                                        } label: {
+                                            Label("Delete", systemImage: "trash")
+                                        }
+                                        .tint(.red)
+
+                                        Button(role: .destructive) {
+
+                                        } label: {
+                                            Label("Edit", systemImage: "pencil")
+                                        }
+                                        .tint(.orange)
+                                    }
                             }
                         }
                     }
-                    .toolbar {
-                        ToolbarItem(placement: .primaryAction) {
-                            Button {
-                                isShowingNewContact.toggle()
-                            } label: {
-                                Image(systemName: "plus")
-                                    .font(.title2)
-                            }
-                        }
-                    }
-                    .sheet(isPresented: $isShowingNewContact) {
-                        NavigationStack {
-                            CreateContactView(viewModel: .init(provider: provider))
-                        }
-                    }
-                    .navigationTitle("Contacts")
                 }
+            }
+            .toolbar {
+                ToolbarItem(placement: .primaryAction) {
+                    Button {
+                        isShowingNewContact.toggle()
+                    } label: {
+                        Image(systemName: "plus")
+                            .font(.title2)
+                    }
+                }
+            }
+            .sheet(isPresented: $isShowingNewContact) {
+                NavigationStack {
+                    CreateContactView(viewModel: .init(provider: provider))
+                }
+            }
+            .navigationTitle("Contacts")
+        }
+    }
+}
+
+private extension ContentView {
+
+    func delete(_ contact: Contact) throws {
+        let context = provider.newContext
+        let existingContact = try context.existingObject(with: contact.objectID)
+        context.delete(existingContact)
+        Task(priority: .background) {
+            try await context.perform {
+                try context.save()
             }
         }
     }
