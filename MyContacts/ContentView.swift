@@ -22,12 +22,12 @@ struct ContentView: View {
                                 } label: {}
                                     .opacity(0)
 
-                                ContactRowView(contact: contact)
+                                ContactRowView(provider: provider, contact: contact)
                                     .swipeActions(allowsFullSwipe: true) {
 
                                         Button(role: .destructive) {
                                             do {
-                                                try delete(contact)
+                                                try provider.delete(contact, in: provider.viewContext)
                                             } catch {
                                                 print(error)
                                             }
@@ -66,20 +66,6 @@ struct ContentView: View {
                 }
             })
             .navigationTitle("Contacts")
-        }
-    }
-}
-
-private extension ContentView {
-
-    func delete(_ contact: Contact) throws {
-        let context = provider.newContext
-        let existingContact = try context.existingObject(with: contact.objectID)
-        context.delete(existingContact)
-        Task(priority: .background) {
-            try await context.perform {
-                try context.save()
-            }
         }
     }
 }

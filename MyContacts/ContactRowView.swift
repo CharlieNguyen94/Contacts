@@ -3,7 +3,7 @@ import SwiftUI
 struct ContactRowView: View {
 
     @Environment(\.managedObjectContext) private var mock
-
+    let provider: ContactsProvider
     @ObservedObject var contact: Contact
 
     var body: some View {
@@ -38,9 +38,7 @@ private extension ContactRowView {
     func toggleFavourite() {
         contact.isFavourite.toggle()
         do {
-            if mock.hasChanges {
-                try mock.save()
-            }
+            try provider.persist(in: mock)
         } catch {
             print(error)
         }
@@ -49,6 +47,7 @@ private extension ContactRowView {
 
 struct ContactRowView_Previews: PreviewProvider {
     static var previews: some View {
-        ContactRowView(contact: .preview())
+        let previewProvider = ContactsProvider.shared
+        ContactRowView(provider: previewProvider, contact: .preview(context: previewProvider.viewContext))
     }
 }
