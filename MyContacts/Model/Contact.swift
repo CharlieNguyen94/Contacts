@@ -56,7 +56,10 @@ extension Contact {
             return config.query.isEmpty ? NSPredicate(format: "isFavourite == %@", NSNumber(value: true)) :
             NSPredicate(format: "name CONTAINS[cd] %@ AND isFavourite == %@", config.query, NSNumber(value: true))
         }
+    }
 
+    static func sort(order: Sort) -> [NSSortDescriptor] {
+        [NSSortDescriptor(keyPath: \Contact.name, ascending: order == .asc)]
     }
 }
 
