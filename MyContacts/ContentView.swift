@@ -1,8 +1,14 @@
 import SwiftUI
 
+struct SearchConfig: Equatable {
+    var query: String = ""
+
+}
+
 struct ContentView: View {
 
     @State private var contactToEdit: Contact?
+    @State private var searchConfig: SearchConfig = .init()
 
     @FetchRequest(fetchRequest: Contact.all()) private var contacts
 
@@ -48,6 +54,7 @@ struct ContentView: View {
                     }
                 }
             }
+            .searchable(text: $searchConfig.query)
             .toolbar {
                 ToolbarItem(placement: .primaryAction) {
                     Button {
@@ -66,6 +73,9 @@ struct ContentView: View {
                 }
             })
             .navigationTitle("Contacts")
+            .onChange(of: searchConfig) { newValue in
+                contacts.nsPredicate = Contact.filter(newValue.query)
+            }
         }
     }
 }
