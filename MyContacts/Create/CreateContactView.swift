@@ -5,6 +5,8 @@ struct CreateContactView: View {
     @Environment(\.dismiss) private var dismiss
     @ObservedObject var viewModel: EditContactViewModel
 
+    @State private var hasError = false
+
     var body: some View {
         List {
 
@@ -38,12 +40,7 @@ struct CreateContactView: View {
         .toolbar {
             ToolbarItem(placement: .confirmationAction) {
                 Button("Done") {
-                    do {
-                        try viewModel.save()
-                        dismiss()
-                    } catch {
-                        print(error)
-                    }
+                    validate()
                 }
             }
 
@@ -52,6 +49,23 @@ struct CreateContactView: View {
                     dismiss()
                 }
             }
+        }
+        .alert("Something is wrong!", isPresented: $hasError) {}
+    }
+}
+
+private extension CreateContactView {
+
+    func validate() {
+        if viewModel.contact.isValid {
+            do {
+                try viewModel.save()
+                dismiss()
+            } catch {
+                print(error)
+            }
+        } else {
+            hasError = true
         }
     }
 }

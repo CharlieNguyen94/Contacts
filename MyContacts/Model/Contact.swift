@@ -10,6 +10,12 @@ final class Contact: NSManagedObject, Identifiable {
     @NSManaged var notes: String
     @NSManaged var phoneNumber: String
 
+    var isValid: Bool {
+        !name.isEmpty &&
+        !phoneNumber.isEmpty &&
+        !email.isEmpty
+    }
+
     var isBirthday: Bool {
         Calendar.current.isDateInToday(dob)
     }
