@@ -1,0 +1,29 @@
+{
+  "configurations" : [
+    {
+      "id" : "6E645BF6-81A9-4811-8630-55BB8033CBF4",
+      "name" : "Test Scheme Action",
+      "options" : {
+
+      }
+    }
+  ],
+  "defaultOptions" : {
+    "targetForVariableExpansion" : {
+      "containerPath" : "container:MyContacts.xcodeproj",
+      "identifier" : "9524D80A2A4EC1D900E81FA5",
+      "name" : "MyContacts"
+    }
+  },
+  "testTargets" : [
+    {
+      "parallelizable" : true,
+      "target" : {
+        "containerPath" : "container:MyContacts.xcodeproj",
+        "identifier" : "956EB96D2A52DE2900E231A0",
+        "name" : "MyContactsTests"
+      }
+    }
+  ],
+  "version" : 1
+}
